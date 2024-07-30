@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site do Bot de Moderação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+    <script>
+        // Função para lidar com o clique no botão de login
+        function handleLoginClick() {
+            alert('Login com Discord não implementado.'); // Alerta simples para demonstração
+            // Aqui você pode adicionar lógica para integração com OAuth ou redirecionar para uma página de login
+        }
+        
+        // Função para redirecionar para adicionar o bot
+        function addBot() {
+            window.location.href = 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&scope=bot&permissions=8';
+        }
+        
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Adiciona o evento de clique para o botão de login
+            document.getElementById('login-button').addEventListener('click', handleLoginClick);
+            // Adiciona o evento de clique para o botão de adicionar bot
+            document.getElementById('add-bot-button').addEventListener('click', addBot);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Site do Bot de Moderação</h1>
+        <button id="login-button">Login com Discord</button>
+        <a href="https://github.com/seu-usuario" target="_blank">
+            <img src="https://github.com/favicon.ico" alt="GitHub" class="icon">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">Sobre o Bot</a></li>
+            <li><a href="#features">Funcionalidades</a></li>
+            <li><a href="#add-bot">Adicionar Bot</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>Sobre o Bot</h2>
+            <p>Este bot é focado em moderação para servidores Discord. Ele oferece uma ampla gama de funcionalidades para manter seu servidor seguro e organizado.</p>
+        </section>
+
+        <section id="features">
+            <h2>Funcionalidades</h2>
+            <ul>
+                <li>Detecção de mensagens apagadas e editadas</li>
+                <li>Gerenciamento de permissões</li>
+                <li>Moderação automática</li>
+                <li>Respostas personalizadas</li>
+            </ul>
+        </section>
+
+        <section id="add-bot">
+            <h2>Adicionar o Bot ao Seu Servidor</h2>
+            <button id="add-bot-button">
+                Adicionar Bot
+            </button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BOT KKKKKKKK</p>
+    </footer>
+</body>
+</html>
