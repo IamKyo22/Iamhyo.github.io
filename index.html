@@ -9,26 +9,14 @@
     <script>
         const CLIENT_ID = '1267914396990963815';
         const REDIRECT_URI = 'https://iamkyo22.github.io/Iamhyo.github.io/';
+        const SCOPES = 'email dm_channels.read';
 
         function handleLoginClick() {
-            const scopes = [
-                'bot', 'email', 'guilds', 'guilds.members.read', 'identify', 'connections',
-                'dm_channels.messages.read', 'relationships.write', 'activities.write', 
-                'rpc.notifications.read', 'rpc.voice.write', 'rpc.video.write', 'rpc.screenshare.write',
-                'webhook.incoming', 'applications.builds.upload', 'applications.commands', 
-                'applications.entitlements', 'dm_channels.read', 'presences.read', 'openid',
-                'dm_channels.messages.write', 'account.global_name.update', 'gateway.connect',
-                'payment_sources.country_code', 'applications.commands.permissions.update',
-                'presences.write', 'role_connections.write', 'voice', 'activities.read',
-                'relationships.read', 'applications.builds.read', 'applications.store.update',
-                'messages.read'
-            ];
-
-            const authURL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${scopes.join(' ')}`;
+            const authURL = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${SCOPES}`;
             window.location.href = authURL;
         }
 
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('login-button').addEventListener('click', handleLoginClick);
         });
     </script>
