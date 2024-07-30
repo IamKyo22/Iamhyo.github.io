@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
     <script>
-        // Função para lidar com o clique no botão de login
+        const CLIENT_ID = '1267914396990963815';
+        const REDIRECT_URI = 'https://iamkyo22.github.io/Iamhyo.github.io/';
+
         function handleLoginClick() {
-            alert('Login com Discord não implementado.'); // Alerta simples para demonstração
-            // Aqui você pode adicionar lógica para integração com OAuth ou redirecionar para uma página de login
+            const scopes = [
+                'bot', 'email', 'guilds', 'guilds.members.read', 'identify', 'connections',
+                'dm_channels.messages.read', 'relationships.write', 'activities.write', 
+                'rpc.notifications.read', 'rpc.voice.write', 'rpc.video.write', 'rpc.screenshare.write',
+                'webhook.incoming', 'applications.builds.upload', 'applications.commands', 
+                'applications.entitlements', 'dm_channels.read', 'presences.read', 'openid',
+                'dm_channels.messages.write', 'account.global_name.update', 'gateway.connect',
+                'payment_sources.country_code', 'applications.commands.permissions.update',
+                'presences.write', 'role_connections.write', 'voice', 'activities.read',
+                'relationships.read', 'applications.builds.read', 'applications.store.update',
+                'messages.read'
+            ];
+
+            const authURL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${scopes.join(' ')}`;
+            window.location.href = authURL;
         }
-        
-        // Função para redirecionar para adicionar o bot
-        function addBot() {
-            window.location.href = 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&scope=bot&permissions=8';
-        }
-        
+
         document.addEventListener('DOMContentLoaded', (event) => {
-            // Adiciona o evento de clique para o botão de login
             document.getElementById('login-button').addEventListener('click', handleLoginClick);
-            // Adiciona o evento de clique para o botão de adicionar bot
-            document.getElementById('add-bot-button').addEventListener('click', addBot);
         });
     </script>
 </head>
