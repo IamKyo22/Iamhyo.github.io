@@ -8,17 +8,21 @@
     <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Função para obter informações do perfil do usuário
-            async function fetchProfile() {
-                const response = await fetch('/api/user-profile');
-                const data = await response.json();
-                
-                document.getElementById('username').textContent = data.username;
-                document.getElementById('email').textContent = data.email;
-                document.getElementById('avatar').src = data.avatarUrl;
+            async function checkAuthentication() {
+                const response = await fetch('/api/check-auth');
+                if (response.status === 401) {
+                    // Redirecionar para a página de login se não estiver autenticado
+                    window.location.href = 'index.html';
+                } else {
+                    // Atualizar informações do perfil se autenticado
+                    const data = await response.json();
+                    document.getElementById('username').textContent = data.username;
+                    document.getElementById('email').textContent = data.email;
+                    document.getElementById('avatar').src = data.avatarUrl;
+                }
             }
 
-            fetchProfile();
+            checkAuthentication();
         });
     </script>
 </head>

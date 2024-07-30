@@ -8,25 +8,32 @@ const REDIRECT_URI = 'https://iamkyo22.github.io/Iamhyo.github.io/';
 
 app.use(express.static('public')); // Para servir arquivos estáticos como HTML e CSS
 
-app.get('/api/user-profile', async (req, res) => {
-    const token = req.headers.authorization.split(' ')[1]; // Assumindo que o token está no header Authorization
+// Simulação de autenticação
+app.get('/api/check-auth', (req, res) => {
+    const token = req.headers.authorization?.split(' ')[1];
 
-    try {
-        const response = await axios.get('https://discord.com/api/v10/users/@me', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+    if (!token) {
+        return res.status(401).send('Não autenticado');
+    }
+
+    // Verifica o token com Discord
+    axios.get('https://discord.com/api/v10/users/@me', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(response => {
         const user = response.data;
         res.json({
             username: user.username,
             email: user.email,
             avatarUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
         });
-    } catch (error) {
-        console.error('Erro ao obter perfil do usuário:', error);
-        res.status(500).send('Erro ao obter perfil do usuário.');
-    }
+    })
+    .catch(error => {
+        console.error('Erro ao verificar token:', error);
+        res.status(401).send('Não autenticado');
+    });
 });
 
 app.listen(3000, () => {
