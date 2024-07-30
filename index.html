@@ -9,7 +9,7 @@
     <script>
         const CLIENT_ID = '1267914396990963815';
         const REDIRECT_URI = 'https://iamkyo22.github.io/Iamhyo.github.io/';
-        const SCOPES = 'email dm_channels.read';
+        const SCOPES = 'email dm_channels.read identify guilds guilds.members.read dm_channels.messages.write connections';
 
         function handleLoginClick() {
             const authURL = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${SCOPES}`;
